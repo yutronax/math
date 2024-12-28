@@ -1,0 +1,19 @@
+import re
+
+def math(islem):
+    # Yalnızca geçerli matematiksel ifadeleri kabul etmek için regex kullanılır
+    # Bu regex, yalnızca sayılar ve temel operatörler içeriyor
+    if re.match(r'^[0-9+\-*/%^().\s]+$', islem): 
+        try:
+            sonuc = eval(islem) # istenilen işlemlere sadece yazarak rahatlıkla yapılabilir hale getirildi kafa karaşıklığı ve işlem maliyeti azaltıldı 
+            print(f"Sonuç: {sonuc}")
+        except ZeroDivisionError:
+            print("Hata: Bir sayıyı sıfıra bölemezsiniz.")
+        except Exception as hata:
+            print(f"Beklenmedik bir hata oluştu: {hata}")
+    else:
+        print("Hata: Geçersiz karakterler içeriyor. Lütfen yalnızca sayılar ve matematiksel operatörler kullanın.")
+    
+# Kullanıcıdan işlem almak
+islem = input("Matematiksel işlemi yazın: ")
+math(islem)
